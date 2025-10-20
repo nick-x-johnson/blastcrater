@@ -37,14 +37,15 @@
       100% { background-position: 30% 60%, 70% 80%, 40% 90%; }
     }
 
-    img {
+    /* Container for text to give extra horizontal space for glow */
+    .text-container {
       position: relative;
+      width: 120%;          /* wider than viewport */
+      max-width: 140vw;     /* prevent extreme stretch */
+      padding: 0 10vw;      /* horizontal padding for glow bleed */
+      display: flex;
+      justify-content: center;
       z-index: 1;
-      width: 480px;
-      max-width: 85vw;
-      height: auto;
-      display: block;
-      animation: fadeIn 2s ease-in-out;
     }
 
     h1 {
@@ -65,8 +66,7 @@
     .flicker {
       display: inline-block;
       animation: flicker 2s infinite;
-      /* Start the flickering after 2 seconds */
-      animation-delay: 2s;
+      animation-delay: 2s; /* Start flickering after 2 seconds */
     }
 
     /* Unsynchronized delays for each letter */
@@ -100,7 +100,8 @@
   </style>
 </head>
 <body>
-  <img src="blast_crater_dark_v2.png" alt="Blast Crater Explosion">
-  <h1>CO<span class="flicker">M</span>ING SO<span class="flicker">O</span>N</h1>
+  <div class="text-container">
+    <h1>CO<span class="flicker">M</span>ING SO<span class="flicker">O</span>N</h1>
+  </div>
 </body>
 </html>
