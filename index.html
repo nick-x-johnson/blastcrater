@@ -37,22 +37,38 @@
       100% { background-position: 30% 60%, 70% 80%, 40% 90%; }
     }
 
-    /* Container for text to give extra horizontal space for glow */
     .text-container {
       position: relative;
-      width: 120%;          /* wider than viewport */
-      max-width: 140vw;     /* prevent extreme stretch */
-      padding: 0 10vw;      /* horizontal padding for glow bleed */
+      /* On Desktop, makes it wider than the viewport to allow glow to bleed */
+      width: 120%;          
+      max-width: 140vw;     
+      padding: 0 10vw;      
       display: flex;
       justify-content: center;
+      box-sizing: border-box; 
       z-index: 1;
+    }
+
+    /* Media query to ensure safety on small mobile screens */
+    @media (max-width: 768px) {
+        .text-container {
+            width: 100%; /* Collapse to 100% on mobile */
+            padding: 0 1rem; /* Standard mobile padding */
+            max-width: 100%;
+        }
     }
 
     h1 {
       position: relative;
       z-index: 1;
-      margin-top: 50px;
-      font-size: 3rem;
+      margin: 0; 
+      
+      /* ADJUSTMENT: Max font size reduced to 3rem to match original fixed size on laptops */
+      font-size: clamp(2rem, 8vw, 3rem); 
+      line-height: 1.2;
+      white-space: nowrap; 
+      text-align: center;
+      
       letter-spacing: 4px;
       color: #ccffcc;
       text-shadow:
@@ -66,7 +82,7 @@
     .flicker {
       display: inline-block;
       animation: flicker 2s infinite;
-      animation-delay: 2s; /* Start flickering after 2 seconds */
+      animation-delay: 2s; 
     }
 
     /* Unsynchronized delays for each letter */
